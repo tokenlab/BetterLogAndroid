@@ -1,0 +1,3 @@
+include ':betterlog'
+include ':app'
+rootProject.name = "BetterLogAndroid"
