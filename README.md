@@ -1,11 +1,28 @@
 ### Better Log Android
 
-A simple yet useful lib to print better Logcat messages
+A simple yet useful lib to print better Logcat messages.
 
-Simple use `BetterLog.*` instead of `Log.*`.
+To install, simple add jitpack in your root build.gradle:
+```
+    repositories {
+        [...]
+        maven { url "https://jitpack.io" }
+    }
+```
 
-This log will have the method name that call the log and a link to that line on your Logcat window:
+And in your module build.gradle:
+```
+    implementation 'com.github.tokenlab:better-log-android:x.y.z'
+```
 
-[Logcat sample](sample.png)
+To use, simple change to `BetterLog.*` instead of `Log.*`.
+
+```kotlin
+    BetterLog.d("TAG", "Log message", error)
+```
+
+This log will have the method name that printed the log and a link to that line on your Logcat window:
+
+[Logcat image example](sample.png)
 
 You can include `typealias Logs = BetterLog` in your project if you prefer shorter names
