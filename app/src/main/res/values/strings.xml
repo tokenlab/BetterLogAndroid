@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BetterLogAndroid</string>
+    <string name="instructions">All the info this lib provides is shown in Android Studio\'s Logcat tab</string>
 </resources>
