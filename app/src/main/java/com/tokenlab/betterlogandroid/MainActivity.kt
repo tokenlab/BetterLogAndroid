@@ -1,13 +1,14 @@
 package com.tokenlab.betterlogandroid
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.tokenlab.betterlog.BetterLog
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        private const val TAG = "SampleAct"
+        private const val TAG = "SampleLog"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         // Log with default values D/BetterLog: ---
         BetterLog.d()
         BetterLog.d(msg="Quick debug message")
-        BetterLog.q("Another way to do a quick debug message")
 
         try {
             allExamples()
@@ -26,6 +26,15 @@ class MainActivity : AppCompatActivity() {
             // Log with default values
             BetterLog.w(tr=error)
         }
+
+        exampleFunction {
+            BetterLog.d(msg="Inside lambda")
+        }
+
+        findViewById<TextView>(R.id.instructionText).setOnClickListener {
+            BetterLog.d(msg="Text clicked!")
+        }
+
     }
 
     private fun allExamples() {
@@ -35,6 +44,15 @@ class MainActivity : AppCompatActivity() {
         BetterLog.d(TAG, "Sample debug message")
         BetterLog.v(TAG, "Sample verbose message")
 
+        exampleFunction {
+            BetterLog.d(TAG, "Lambda inside other function")
+            BetterLog.path(TAG, "Viewing path for this log")
+        }
+
         throw RuntimeException("Sample for exceptions")
+    }
+
+    private fun exampleFunction(fn: () -> Unit) {
+        fn()
     }
 }
